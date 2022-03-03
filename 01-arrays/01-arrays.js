@@ -17,7 +17,7 @@ function invertirOrden(array) {
     //     }
     // }
     // return test
-    
+
     let newArray = [];
     for(let i=0;i<array.length;i++){
         if(array[i]<10){
@@ -54,7 +54,36 @@ function invertirOrden(array) {
 function numeroEnComun(array1, array2) {
     // Entre los dos array's que recibe la funcion por parametro
     // Buscar y retornar el valor en comun entre ellos
-   
+    let nComun = []
+    for(let i=0;i<array1.length;i++){
+        for(j=0;j<array2.length;j++){
+            if(array1[i] === array2[j]){
+                nComun.push(array1[i])
+            }else{
+                var min = array1[0];
+                var min2 = array2[0]
+                if(array1[i] !== array2[j]){
+                    for(i=1;i<array1.length;i++){
+                        for(j=1;j<array2.length;j++){
+                            if(array1[i]<min){
+                               min=array1[i] 
+                            }
+                            if(array2[j]<min2){
+                                min2 = array2[i]
+                            }
+                            
+                            if(min > min2){
+                                return min2
+                            }else{
+                                return min
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return nComun
 };
 
 

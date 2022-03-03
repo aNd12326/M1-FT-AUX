@@ -5,7 +5,9 @@ function crearClaseLibro() {
       // El constructor de la clase Libro recibe titulo (string), autor (string), traducciones (array de objetos)
       // Inicializar las propiedades del libro con los valores recibidos como argumento
       // Tu código aca:
-      
+      this.titulo = titulo,
+      this.autor = autor,
+      this.traducciones = traducciones
       
     }
 

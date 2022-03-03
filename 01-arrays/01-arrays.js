@@ -5,8 +5,49 @@ function invertirOrden(array) {
     //
     // DETALLE: En caso de que el elemento contenga mas de 1 digito, el mismo NO debera ser devuelto
     // No vale usar el metodo "reverse"
+
+    // let test = []
+    // for(let i=0;i<array.length;i++){ --no sirve xD
+    //     if(array[i] > 9){
+    //         let aux = []
+    //         aux.push(array[i])
+    //         console.log(aux)
+    //     }else{
+    //         test.push(array[i])
+    //     }
+    // }
+    // return test
     
- 
+    let newArray = [];
+    for(let i=0;i<array.length;i++){
+        if(array[i]<10){
+            newArray.unshift(array[i]);
+        }
+    }
+    return newArray;
+
+    // [1,    4 ,  24 , 10,    8]
+    // i[0] i[1] i[2]  i[3]  i[4]
+//-------------------------------------------------------------------------
+// let newArray = [];
+// for(let i=array.length - 1;i>=0;i--){
+//     if(array[i]<10)
+//     newArray.push(array[i]);
+// }
+// return newArray;
+//-------------------------------------------------------------------------
+// let newArray = [];
+// array.forEach(element => {
+//     if(element < 10) newArray.unshift(element);
+// });
+// return newArray;
+//-------------------------------------------------------------------------
+// let newArray = [];
+// for(let element of array){
+//     if(element <10) newArray.unshift(element);
+// }
+// return newArray;
+
 };
 
 

@@ -14,13 +14,13 @@ function crearClaseLibro() {
     getTitulo() {
       // este método debe retornar el titulo del libro.
       // Tu código aca:
-      
+      return this.titulo;
     }
 
     getAutor() {
       // El método debe retornar nombre y apellido del autor
       // Tu código aca:
-      
+      return this.autor
     }
 
     addTraduccion(idioma, editorial) {
@@ -28,7 +28,10 @@ function crearClaseLibro() {
       // { idioma: idioma, editorial: editorial} al arreglo de traducciones del libro.
       // No debe retornar nada.
       // Tu código aca:
-      
+      this.traducciones.push({
+        "idioma": idioma,
+        "editorial": editorial
+      })
     }
 
     getTraducciones() {
@@ -37,7 +40,13 @@ function crearClaseLibro() {
       // Suponiendo que el libro tiene estas traducciones: [{idioma: 'inglés', editorial: 'Scholastic'}, {idioma: 'castellano', editorial: 'Santillana'}]
       // libro.getTraducciones() debería devolver ['inglés', 'castellano']
       // Tu código aca:
-      
+      var idiomas = []
+      var arr = this.traducciones;
+      for (let i = 0; i < arr.length; i++) {
+
+        idiomas.push(arr[i].idioma)
+      }
+      return idiomas;
 
     }
 
@@ -48,7 +57,12 @@ function crearClaseLibro() {
       // Suponiendo que el libro tiene estas traducciones: [{idioma: 'inglés', editorial: 'Scholastic'}, {idioma: 'castellano', editorial: 'Santillana'}]
       // libro.getAlcance() deberia devolver 2
       // Tu código aca:
-      
+      var count = 0;
+      var array = this.traducciones;
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].idioma) count++
+
+      } return count;
 
     }
   }
@@ -74,7 +88,15 @@ const printStaff = function (objeto) {
   // Retornar un arreglo que contenga los strings indicando el titulo y nombre de cada miembro del staff
   // de esta forma "The headmaster is Albus Percival Wulfric Brian Dumbledore" 
   // el arreglo debe mantener el orden que posee el staff del objeto.
-  
+  var arr = []
+  for (let staff in objeto) {
+    for (let titulo in objeto[staff]) {
+      for (let name in objeto[staff][titulo]) {
+        arr.push('The ' + titulo + ' is ' + objeto[staff][titulo][name])
+      }
+    }
+  }
+  return arr;
   
 };
 

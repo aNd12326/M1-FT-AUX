@@ -15,38 +15,32 @@
 // - Tener un ticket que corresponda con el evento (prop event de ticket)
 // - Que no haya ingresado ya otra persona al evento con ese mismo número de ticket
 // Finalmente la función debe devolver un arreglo con todos los nombres de las personas que pudieron ingresar
-// Importante!: Aquellas personas que no cumplan con los requisitos para ingresar deben ser removidos de la cola 
+// Importante!: Aquellas personas que no cumplan con los requisitos para ingresar deben ser removidos de la cola
 
-var controlAcces = function(queue, event){
-    // Tu código aca:
-    //Lo primero que obtengo es el tamaño de la cola debo verificar cuantas personas hay 
-    //verifico si hay una funcion predefinida de la cola 
-    //*in order to queue has functions of class Queue then need call tha constructor function
-    //but if I look at the test there is the called then it is no neccesary 
-    let entraron = [];
-    let noEntraron = [];
-    let number = [];
-    queue.array.forEach(elem =>{
-     number.unshift(elem.ticket.number);
-     //console.log(number);
-     for (let index = 1; index < queue.size(); index++) {
-         if (elem.ticket.number === number[index]) 
-              elem.ticket.number = undefined;
-             
-     }   
-     
-     if(elem.age > 18 && elem.ticket.event === event && elem.ticket.number !== undefined ){
-          entraron.push(elem.fullname);
-     }
-     else noEntraron.push(elem.fullname);
-  });
-  return entraron;
+var controlAcces = function (queue, event) {
+  // Tu código aca:
+  //Lo primero que obtengo es el tamaño de la cola debo verificar cuantas personas hay
+  //verifico si hay una funcion predefinida de la cola
+  //*in order to queue has functions of class Queue then need call tha constructor function
+  //but if I look at the test there is the called then it is no neccesary
+  let arr=[];
+  let access =[];
+  while(queue.size()){
+    let subject= queue.dequeue();
+    if(
+      subject.age>=18 &&
+      subject.ticket.event=== event &&
+      !access.includes(subject.ticket.number)
+      ){
+        access.push(subject.ticket.number)
+      arr.push(subject.fullname)
+    }
+  }
+  return arr
 
- 
-};
   
+};
 
-  module.exports = {
-    controlAcces,
-   
-}
+module.exports = {
+  controlAcces,
+};

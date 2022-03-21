@@ -6,7 +6,7 @@ const producto = function (array) {
   //escribe aqui tu codigo
   if(array.length === 1) return array[0]
   let element = array.pop();
-  console.log(element)
+  // console.log(element)
   return element*producto(array)
 };
 

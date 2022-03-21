@@ -4,7 +4,27 @@ const { BinarySearchTree } = require("../estructuras")
 // si lo encuentra, debe retornar el nodo. En caso contrario retornar el mensaje correspondiente.
 BinarySearchTree.prototype.search= function(value){
  
+    if (value === this.value) {
+        return this.value;
+    }
+    if (value > this.value) {
+        if (this.right === null) {
+            return 'no se encontró el valor';
+        }
+        else {
+            return this.right.search(value);
+        }
+    } else {
 
+        if (this.left === null) {
+            return 'no se encontró el valor';
+        }
+        else {
+            return this.left.search(value);
+        }
+
+
+    }
 }
 
 
@@ -17,6 +37,17 @@ BinarySearchTree.prototype.search= function(value){
 
 BinarySearchTree.prototype.height= function(){
   
+    var countRigth = 0
+    var countLeft = 0
+
+    if (!this.right && !this.left) { return 0 }
+    if (this.right) {
+        countRigth = 1 + this.right.height();
+    }
+    if (this.left) {
+        countLeft = 1 + this.left.height();
+    }
+    return Math.max(countLeft, countRigth)
 }
 
 module.exports={
